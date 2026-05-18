@@ -18,21 +18,21 @@ while True:
     try:
         ui.ascii(tentativas)
 
-        ui.print_aligned(f"Tentativas: {tentativas}",0)
+        ui.print_aligned(f"Tentativas: {tentativas}", 0)
     
-        ui.print_aligned(f"Letras: {', '.join(sorted(entradas))}",2)
+        ui.print_aligned(f"Letras: {', '.join(sorted(entradas))}", 2)
 
         ui.print_aligned(resposta,4)
         char = ui.get_input("Digite uma letra: ").lower()[0]
     
 
         if char in entradas:
-            print(f"A letra {char} já foi!")
+            ui.print_aligned(f"A letra {char} já foi!", 6)
             time.sleep(1)
             continue
 
         elif not char.isalpha():
-            print("Entrada inválida")
+            ui.print_aligned("Entrada inválida", 6)
             time.sleep(1)
             continue
     
