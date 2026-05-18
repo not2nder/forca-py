@@ -1,8 +1,10 @@
 import sys
+import os
 import time
 import random
 
 from util import ui
+from util import pretty
 
 tentativas = 4
 adivinhado = False
@@ -14,26 +16,27 @@ with open('palavras.txt', 'r') as f:
 
 resposta = "_" * len(palavra)
 
+os.system("cls" if os.name == "nt" else "clear")
+
 while True:
     try:
-        ui.ascii(tentativas)
+        ui.draw(tentativas)
 
-        ui.print_aligned(f"Tentativas: {tentativas}", 0)
+        pretty.printf(f"Tentativas: {tentativas}", 0)
     
-        ui.print_aligned(f"Letras: {', '.join(sorted(entradas))}", 2)
+        pretty.printf(f"Letras: {', '.join(sorted(entradas))}", 2)
 
-        ui.print_aligned(resposta,4)
-        char = ui.get_input("Digite uma letra: ").lower()[0]
+        pretty.printf(resposta,4)
+        
+        char = pretty.scanf("Digite uma letra: ", 6).lower()[0]
     
 
         if char in entradas:
-            ui.print_aligned(f"A letra {char} já foi!", 6)
-            time.sleep(1)
+            pretty.printf(f"A letra {char} já foi!", 8)
             continue
 
         elif not char.isalpha():
-            ui.print_aligned("Entrada inválida", 6)
-            time.sleep(1)
+            pretty.printf("Entrada inválida", 6)
             continue
     
         else:
@@ -49,7 +52,7 @@ while True:
             entradas.add(char)
         
             if adivinhado or tentativas == 0:
-                ui.ascii(tentativas)
+                ui.draw(tentativas)
                 break
             
     except KeyboardInterrupt:

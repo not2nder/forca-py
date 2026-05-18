@@ -2,12 +2,6 @@ import os
 
 cols, lines = os.get_terminal_size()
 
-def render():
-    os.system("cls" if os.name == "nt" else "clear")
-
-    header()
-    footer()
-
 def header():
     texto = "JOGO DA FORCA"
 
@@ -22,7 +16,7 @@ def footer():
     
     print(f"\x1b[7m\x1b[{lines-1};{col}H{aviso}\x1b[0m", end="")
 
-def ascii(tentativas: int):    
+def draw(tentativas: int):    
     match tentativas:
         case 4:
             ascii_art =  """
@@ -85,7 +79,8 @@ def ascii(tentativas: int):
             █████████████
             """
 
-    render()
+    header()
+    footer()
     
     linhas = [linha.strip() for linha in ascii_art.strip().splitlines()]
     
