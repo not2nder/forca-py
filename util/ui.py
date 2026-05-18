@@ -1,13 +1,19 @@
 import os
 
+from util import pretty
+
 cols, lines = os.get_terminal_size()
 
 def header():
     texto = "JOGO DA FORCA"
+    creditos = "Desenvolvido por not2nder"
 
-    gap = (cols//2)-(len(texto)//2)
+    gap = (cols//2) - len(texto) - (len(texto)//2)
 
-    print(f"\x1b[7m\x1b[1;{gap if cols % 2 == 0 else gap-1}H{texto}\x1b[0m", end="")
+    titulo = pretty.justify(texto, creditos, width=(cols//2)+len(texto))
+    
+    resto = cols-(len(titulo))
+    pretty.sprint(pretty.reverse(f"{titulo}{' '*resto}"))
 
 def footer():
     aviso = "[Pressione Ctrl + C para sair]"
@@ -15,6 +21,10 @@ def footer():
     col = (cols//2)-(len(aviso)//2)
     
     print(f"\x1b[7m\x1b[{lines-1};{col}H{aviso}\x1b[0m", end="")
+    
+    #pretty.printf(pretty.justify("Sair:","<Ctrl + C>"), lines-2)
+    #pretty.printf(pretty.justify("Ajuda:","<Ctrl + X>"), lines-1)
+
 
 def draw(tentativas: int):    
     match tentativas:
@@ -79,8 +89,8 @@ def draw(tentativas: int):
             █████████████
             """
 
+    #footer()
     header()
-    footer()
     
     linhas = [linha.strip() for linha in ascii_art.strip().splitlines()]
     
