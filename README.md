@@ -1,6 +1,6 @@
 # Jogo da Forca
 
-![Jogo rodando no terminal](img/App.png)
+![Jogo rodando no terminal](img/App.gif)
 
 Jogo da forca, feito em python rodando diretamente no terminal.
 
