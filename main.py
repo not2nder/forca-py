@@ -1,4 +1,3 @@
-import os
 import sys
 import time
 import random
@@ -17,14 +16,14 @@ resposta = "_" * len(palavra)
 
 while True:
     try:
-        ui.ascii(tentativas)  
+        ui.ascii(tentativas)
 
-        print(f"Tentativas: {tentativas}")
+        ui.print_aligned(f"Tentativas: {tentativas}",0)
     
-        print(f"Letras: {', '.join(sorted(entradas))}")
+        ui.print_aligned(f"Letras: {', '.join(sorted(entradas))}",2)
 
-        print(resposta)
-        char = input("Digite uma letra: ").lower()[0]
+        ui.print_aligned(resposta,4)
+        char = ui.get_input("Digite uma letra: ").lower()[0]
     
 
         if char in entradas:
@@ -50,8 +49,9 @@ while True:
             entradas.add(char)
         
             if adivinhado or tentativas == 0:
-                mostrar_ascii(tentativas)
+                ui.ascii(tentativas)
                 break
+            
     except KeyboardInterrupt:
         sys.exit(0)
 
