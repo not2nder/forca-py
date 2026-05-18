@@ -16,15 +16,8 @@ def header():
     pretty.sprint(pretty.reverse(f"{titulo}{' '*resto}"))
 
 def footer():
-    aviso = "[Pressione Ctrl + C para sair]"
-
-    col = (cols//2)-(len(aviso)//2)
-    
-    print(f"\x1b[7m\x1b[{lines-1};{col}H{aviso}\x1b[0m", end="")
-    
-    #pretty.printf(pretty.justify("Sair:","<Ctrl + C>"), lines-2)
-    #pretty.printf(pretty.justify("Ajuda:","<Ctrl + X>"), lines-1)
-
+    pretty.cprint(pretty.justify(pretty.bold("Sair:"), pretty.dim("<Ctrl + C>"), width= 25), 10)
+    pretty.cprint(pretty.justify(pretty.bold("Ajuda:"), pretty.dim("<Ctrl + X>"), width=25), 11)
 
 def draw(tentativas: int):    
     match tentativas:
@@ -89,7 +82,7 @@ def draw(tentativas: int):
             █████████████
             """
 
-    #footer()
+    footer()
     header()
     
     linhas = [linha.strip() for linha in ascii_art.strip().splitlines()]

@@ -1,5 +1,4 @@
 import sys
-import argparse
 
 import time
 import random
@@ -25,16 +24,12 @@ while True:
 
         pretty.cprint(f"{pretty.bold('Tentativas: ')}: {tentativas}", 0)
         
-        pretty.cprint(f"Letras: {', '.join(sorted(i if i in palavra else pretty.red(i) for i in entradas))}", 2)
+        pretty.cprint(f"Letras: {', '.join(sorted(pretty.green(i) if i in palavra else pretty.red(i) for i in entradas))}", 2)
 
         pretty.cprint(resposta,4)
 
-        pretty.cprint(pretty.justify(pretty.bold("Sair:"), pretty.dim("<Ctrl + C>"), width= 25), 10)
-        # todo
-        pretty.cprint(pretty.justify(pretty.bold("Ajuda:"), pretty.dim("<Ctrl + X>"), width=25), 11)
-        
-        char = pretty.scanf("Digite uma letra: ", 6).lower()[0]
-        
+        char = pretty.scanf("Digite uma letra: ", 6).lower()
+        char = char[0] if char != "" else char
 
         if char in entradas:
             pretty.cprint(f"A letra {char} já foi!", 8)

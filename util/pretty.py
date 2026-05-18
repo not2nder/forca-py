@@ -39,3 +39,6 @@ def dim(text: str):
 
 def red(text: str):
     return f"\x1b[91m{text}\x1b[0m"
+
+def green(text:str):
+    return f"\x1b[32m{text}\x1b[0m"
