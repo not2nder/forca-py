@@ -95,11 +95,3 @@ def draw(tentativas: int):
 
     print("\n")
 
-def get_input(text: str) -> str:
-    meio = cols//2
-    return input(f"\x1b[{(lines//2)+8};{meio-(len(text)//2)}H{text}");
-
-def print_aligned(text: str, offset:int):
-    meio = (cols//2)-(len(text)//2)
-    print(f"\x1b[{(lines//2)+offset};{meio}H{text}")
-
